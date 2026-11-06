@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+  <title>Grok Bot Desk</title>
+  <link rel="manifest" href="manifest.json"/>
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png"/>
+  <link rel="stylesheet" href="app.css"/>
+</head>
+<body>
+  <div id="err" class="err hidden" role="alert"></div>
+  <header class="nav">
+    <button id="navAvatar" class="avatar" aria-label="Account">G</button>
+    <div class="nav-title">Grok Bot <span>›</span></div>
+    <div class="nav-right">
+      <button id="navSearch" class="icon-btn" aria-label="Search">⌕</button>
+      <button id="navBell" class="icon-btn" aria-label="Alerts"><span id="bellDot" class="dot hidden"></span>🔔</button>
+    </div>
+  </header>
+
+  <div id="searchBar" class="search-bar hidden">
+    <input id="searchInput" type="search" placeholder="Name, symbol or mint" enterkeyhint="search"/>
+  </div>
+
+  <main id="view-home" class="view">
+    <div id="homeLoading" class="hidden">
+      <div class="skel" style="height:72px;width:70%"></div>
+      <div class="skel" style="height:180px;margin-top:12px"></div>
+      <div class="skel" style="height:220px;margin-top:12px"></div>
+    </div>
+    <div id="homeBody">
+      <div class="bal-row">
+        <div id="balance" class="odometer">$0.00</div>
+        <span id="paperPill" class="pill orange">PAPER</span>
+      </div>
+      <div class="sub-row">
+        <span id="todayPct" class="muted">+0.00%</span>
+        <span id="mult" class="pill green">1.00×</span>
+      </div>
+      <div class="chart-wrap">
+        <canvas id="homeChart"></canvas>
+      </div>
+      <div class="range" id="rangeSwitch">
+        <button data-range="LIVE" class="on">LIVE</button>
+        <button data-range="1H">1H</button>
+        <button data-range="4H">4H</button>
+        <button data-range="1D">1D</button>
+        <button data-range="1W">1W</button>
+        <button data-range="ALL">ALL</button>
+      </div>
+      <h2 class="sec">Agents · <span id="agentsRunning">0 running</span></h2>
+      <div id="agentCarousel" class="carousel"></div>
+      <h2 class="sec">Activity · <button id="seeAll" class="link">See all</button></h2>
+      <div id="homeActivity" class="act-list"></div>
+      <div class="tab-clear" aria-hidden="true"></div>
+    </div>
+  </main>
+
+  <main id="view-agents" class="view hidden"></main>
+  <main id="view-activity" class="view hidden"></main>
+  <main id="view-account" class="view hidden"></main>
+  <main id="view-auditor" class="view hidden"></main>
+  <main id="view-coin" class="view hidden"></main>
+
+  <nav class="tabbar" aria-label="Main">
+    <button data-tab="home" class="on"><span>Home</span></button>
+    <button data-tab="agents"><span>Agents</span></button>
+    <button data-tab="activity"><span>Activity</span></button>
+    <button data-tab="account"><span>Account</span></button>
+  </nav>
+
+  <script src="chart.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
